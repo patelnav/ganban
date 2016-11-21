@@ -1,0 +1,27 @@
+{% extends 'layout.html' %} {% block content %}
+<br>
+<div class='container'>
+    <div class="jumbotron">
+        <h1>Administration</h1>
+        <p>Transfer data between namespaces.</p>
+        <p></p>
+        <form action='/admin' method='POST'>
+            {% for info in namespace_info %}
+                {% if info.Board > 0 %}
+                <div class="radio">
+                  <label><input type="radio" name="namespace" value="{{ info.namespace }}" {% if loop.first %} checked{% endif %}>
+                      {{ info.text }}</label>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            <div class="form-group">
+                <label for="target_namespace">Target Namespace</label>
+                <input type="email" class="form-control" name="target_namespace" id="target_namespace" placeholder="Target Namespace" value="ganban">
+              </div>
+
+            <p><input class="btn btn-primary btn-lg" type="submit" value="Transfer"></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
