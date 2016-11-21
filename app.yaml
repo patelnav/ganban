@@ -22,4 +22,4 @@ handlers:
 
   - url: /.*
     script: ganban.app
-    # login: admin
+    login: admin
